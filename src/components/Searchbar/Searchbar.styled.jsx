@@ -41,8 +41,12 @@ export const FormBtn = styled.button`
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
-  :hover {
+  &:hover {
     opacity: 1;
+  }
+  > svg {
+    width: 26px;
+    height: 26px;
   }
 `;
 export const BtnLabel = styled.span`
@@ -55,6 +59,7 @@ export const BtnLabel = styled.span`
   white-space: nowrap;
   clip-path: inset(50%);
   border: 0;
+  color: black;
 `;
 export const FormInput = styled.input`
   display: inline-block;
@@ -68,5 +73,22 @@ export const FormInput = styled.input`
   ::placeholder {
     font: inherit;
     font-size: 18px;
+  }
+`;
+
+export const ClearBtn = styled.button`
+  display: inline-block;
+  border: 0;
+  background: inherit;
+  opacity: 0.6;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    opacity: 1;
+  }
+  > svg {
+    width: 25px;
+    height: 25px;
   }
 `;

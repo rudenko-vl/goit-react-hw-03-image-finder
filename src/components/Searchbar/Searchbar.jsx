@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 // import PropTypes from "prop-types";
-import { Header, Form, FormBtn, BtnLabel, FormInput } from "./Searchbar.styled";
+import { FcSearch } from 'react-icons/fc';
+import { AiOutlineClose } from 'react-icons/ai';
+import { Header, Form, FormBtn, BtnLabel, FormInput, ClearBtn } from "./Searchbar.styled";
 
 class Searchbar extends Component {
   state = {
@@ -18,15 +20,19 @@ class Searchbar extends Component {
     this.setState({ inputValue: ev.target.value });
   };
 
+  onClearInput = () => {
+    this.setState({ inputValue: "" });
+  };
+
   render() {
     const { inputValue } = this.state;
     return (
       <Header>
         <Form onSubmit={this.onSubmitForm}>
-          <FormBtn type="submit">
-            <BtnLabel>Search</BtnLabel>
+          <FormBtn type="submit"><FcSearch/>
+            <BtnLabel>
+            </BtnLabel>
           </FormBtn>
-
           <FormInput
             type="text"
             autoComplete="off"
@@ -35,6 +41,7 @@ class Searchbar extends Component {
             onChange={this.onChangeInput}
             value={inputValue}
           />
+          <ClearBtn type="button" onClick={this.onClearInput}><AiOutlineClose/></ClearBtn>
         </Form>
       </Header>
     );
