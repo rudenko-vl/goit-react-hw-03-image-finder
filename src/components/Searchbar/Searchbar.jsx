@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { FcSearch } from 'react-icons/fc';
 import { AiOutlineClose } from 'react-icons/ai';
 import { Header, Form, FormBtn, BtnLabel, FormInput, ClearBtn } from "./Searchbar.styled";
@@ -13,7 +13,8 @@ class Searchbar extends Component {
     const { onSubmit } = this.props;
     const { inputValue } = this.state;
     ev.preventDefault();
-    onSubmit(inputValue);
+    onSubmit(inputValue.toLowerCase());
+    this.onClearInput()
   };
 
   onChangeInput = (ev) => {
@@ -48,8 +49,8 @@ class Searchbar extends Component {
   }
 }
 
-// Searchbar.propTypes = {
-//   onSubmitForm: PropTypes.func.isRequired
-// }
+Searchbar.propTypes = {
+  onSubmitForm: PropTypes.func
+}
 
 export default Searchbar;

@@ -1,15 +1,22 @@
+import PropTypes from 'prop-types';
 import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
-function ImageGallery({ arrayImages, onClick, toogleModal }) {
+import { List } from "./ImageGallery.styled";
+function ImageGallery({ arrayImages, onClick}) {
     return (
-        <ul>
+        <List>
             {arrayImages.map((image) => {
                 return (
-                    <ImageGalleryItem onClick={onClick} toogleModal={toogleModal} key={image.id} image={image}></ImageGalleryItem>
+                    <ImageGalleryItem onClick={onClick} key={image.id} image={image}></ImageGalleryItem>
                 )
-            })};
-        </ul>
+            })}
+        </List>
     );
     
+};
+
+ImageGallery.propTypes = {
+  arrayImages: PropTypes.array,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;

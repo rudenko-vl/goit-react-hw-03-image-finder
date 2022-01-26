@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
+import PropTypes from 'prop-types';
 import { Overlay, ModalWindow } from "./Modal.styled";
 const modalRoot = document.querySelector("#modal-root");
 
@@ -14,19 +15,19 @@ class Modal extends Component {
     
     handleKeyDown = (ev) => {
     if (ev.code === "Escape") {
-      this.props.toogleModal(ev);
+      this.props.toggleModal(ev);
     }
   };
 
   handleClickOverlay = (ev) => {
     if (ev.currentTarget === ev.target) {
-      this.props.toogleModal(ev);
+      this.props.toggleModal(ev);
     }
     };
     
     render() {
         return createPortal(
-            <Overlay>
+            <Overlay onClick={this.handleClickOverlay}>
                 <ModalWindow>
                     {this.props.children}
                 </ModalWindow>
@@ -34,5 +35,10 @@ class Modal extends Component {
         );
     };
 };
+
+Modal.propTypes = {
+  toggleModal: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+}
 
 export default Modal;

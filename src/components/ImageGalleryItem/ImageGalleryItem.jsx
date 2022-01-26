@@ -1,14 +1,20 @@
-
-function ImageGalleryItem({ image, onClick, toogleModal }) {
+import PropTypes from 'prop-types';
+import { Item, GalleryImg } from "./ImageGalleryItem.styled";
+function ImageGalleryItem({ image, onClick }) {
     return (
-        <li onClick={() => {
+        <Item onClick={() => {
         onClick(image.largeImageURL);
-        toogleModal();
         }}>
-            <img src={image.webformatURL} alt="" />
+            <GalleryImg src={image.webformatURL} alt="" />
 
-        </li>
+        </Item>
     )
 };
+
+ImageGalleryItem.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    image: PropTypes.object.isRequired,
+
+}
 
 export default ImageGalleryItem;
